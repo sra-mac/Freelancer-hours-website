@@ -7,8 +7,9 @@ use App\Models\User;
 use Illuminate\Database\Seeder;
 //use Database\Factories\ProjectFactory;
 use App\Models\Project;
-//use App\Models\Project;
+use App\Models\Proposal;
 use Database\Factories\UserFactory;
+use Database\Factories\ProposalFactory;
 
 class DatabaseSeeder extends Seeder
 {
@@ -23,6 +24,12 @@ class DatabaseSeeder extends Seeder
         //em ordem aleatória, vai trazer 10 registros
         User::query()->inRandomOrder()->limit(10)->get()
             //para cada loop, cria um projeto e linka com o usuário
-            ->each(fn (User $u) => Project::factory()->create(['created_by' => $u-> id]));
+            //lambda ->each(fn (User $u) => Project::factory()->create(['created_by' => $u-> id]));
+            ->each(function (User $u) {
+                $project = Project::factory()->create(['created_by' => $u-> id]);
+
+                Proposal::factory()->count(random_int(4, 45))->create(['project_id' => $project->id]);
+            
+            });
     }
 }
