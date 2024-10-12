@@ -7,7 +7,7 @@ use App\Models\User;
 
 class Teste extends Component
 {
-    public $search = ''; 
+    public string $search = ''; 
     public function render()
     {
         //return view('livewire.teste');
