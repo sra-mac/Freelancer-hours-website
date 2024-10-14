@@ -1,7 +1,7 @@
-<div>
-    Componente livewire show
-    <pre>
+{{-- <div> --}}
+    <x-projects.card :$project />
+    {{-- <pre>
         Title: {{ $project->title }}
         Description: {!! $project->description !!}
-    </pre>
-</div>
+    </pre> --}}
+{{-- </div> --}}
